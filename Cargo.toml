@@ -1,4 +1,8 @@
 [package]
 name = "n_array"
 version = "0.1.0"
-authors = ["Sam Blumire <sdblumire@gmail.com>"]
+authors = ["Lucille Blumire <llblumire@gmail.com>"]
+repository = "https://github.com/SDBlumire/string_generator"
+description = "Arbitrarily dimensioned arrays"
+keywords = ["2d", "3d", "multidimensional", "dimension", "array"]
+license = "GPL-2.0+"

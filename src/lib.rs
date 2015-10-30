@@ -9,7 +9,9 @@ use helpers::{index_to_position, position_to_index};
 use std::borrow::Borrow;
 use std::convert::AsRef;
 use std::default::Default;
+use std::iter::IntoIterator;
 use std::ops::{Index, IndexMut};
+use std::vec::IntoIter;
 
 #[derive(Debug)]
 /// An arbitrary n-dimensional array. Dimensions is the number of dimensions, magnitudes contains
@@ -21,7 +23,7 @@ pub struct NArray<T> {
 }
 impl<T: Default> NArray<T> {
 
-    /// Returns a new NArray, with each index populated by a function of it's coordinates. O(n)
+    /// Returns a new NArray, with each index populated by a function of it's coordinates.)
     pub fn from_function<F>(dim: usize, mag: &[usize], func: F) -> Self 
         where F: Fn(&[usize]) -> T
     {
@@ -53,16 +55,22 @@ impl<T: Default> NArray<T> {
 
 impl<T, S: AsRef<[usize]>> Index<S> for NArray<T> {
     type Output = T;
-    /// O(n) implementation of indexing (where n is the number of dimensions).
     fn index(&self, index: S) -> &Self::Output {
         let index = index.as_ref();
         return &self.data[index_to_position(self.dimensions, &self.magnitudes, index)]
     }
 }
 impl<T, S: AsRef<[usize]>> IndexMut<S> for NArray<T> {
-    /// O(n) implementation of indexing (where n is the number of dimensions).
     fn index_mut(&mut self, index: S) -> &mut Self::Output {
         let index = index.as_ref();
         return &mut self.data[index_to_position(self.dimensions, &self.magnitudes, index)];
+    }
+}
+
+impl<T> IntoIterator for NArray<T> {
+    type Item = T;
+    type IntoIter = IntoIter<T>;
+    fn into_iter(self) -> Self::IntoIter {
+        self.data.into_iter()
     }
 }
