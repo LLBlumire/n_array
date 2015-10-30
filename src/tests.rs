@@ -52,3 +52,11 @@ fn set_out_of_range() {
     let mut my_n_array = NArray::<i32>::new(2, &[3, 3]);
     my_n_array[&[2, 5]] = 2;
 }
+
+#[test]
+fn bit_from_function() {
+    let my_fancy_array: NArray<u32> = NArray::from_function(3, &[5, 8, 11], |n: &[usize]| {
+        n.to_vec().iter().fold(1, |acc, &item| acc*item as u32)
+    });
+    assert_eq!(my_fancy_array[&[3, 4, 9]], 108);
+}
