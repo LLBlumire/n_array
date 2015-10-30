@@ -1,6 +1,6 @@
 Use Arbitrarily dimensioned arrays in rust.
 
-Note: Although I've tried to keep implementations as fast as possible, constructors are O(dn) and
+Note: Although I've tried to keep implementations as fast as possible, constructors are O(d^2) and
 indexing is O(d) where d is the number of dimensions, and n is the sum of the magnitudes of all
 dimensions.
 
