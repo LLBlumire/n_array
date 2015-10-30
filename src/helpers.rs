@@ -1,6 +1,3 @@
-use super::NArray;
-use std::borrow::Borrow;
-
 pub fn index_to_position(dimensions: usize, magnitudes: &Vec<usize>, index: &[usize]) -> usize {
     if index.len() != dimensions {
         panic!("Attempted to index NArray of dimension {} but {} dimensions supplied",

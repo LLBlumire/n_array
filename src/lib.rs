@@ -21,8 +21,7 @@ pub struct NArray<T> {
     magnitudes: Vec<usize>,
     data: Vec<T>
 }
-impl<T: Default> NArray<T> {
-
+impl<T> NArray<T> {
     /// Returns a new NArray, with each index populated by a function of it's coordinates.)
     pub fn from_function<F>(dim: usize, mag: &[usize], func: F) -> Self 
         where F: Fn(&[usize]) -> T
@@ -46,7 +45,8 @@ impl<T: Default> NArray<T> {
             data: data
         }
     }
-
+}
+impl<T: Default> NArray<T> {
     /// Returns a new NArray, with each index populated by the default for a given type.
     pub fn new(dim: usize, mag: &[usize]) -> Self {
         Self::from_function(dim, mag, |_: &[usize]| -> T { T::default() })

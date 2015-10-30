@@ -9,12 +9,12 @@ fn it_works() { }
 #[test]
 #[should_panic]
 fn incorrect_initialisation() {
-    let x = NArray::<i32>::new(2, &[3, 4, 2]);
+    let _ = NArray::<i32>::new(2, &[3, 4, 2]);
 }
 
 #[test]
 fn correct_initialisation() {
-    let x = NArray::<i32>::new(2, &[3, 3]);
+    let _ = NArray::<i32>::new(2, &[3, 3]);
 }
 
 #[test]
@@ -30,7 +30,7 @@ fn set_and_get_values() {
 
 #[test]
 fn set_with_function() {
-    let mut n_array = NArray::<i32>::from_function(2, &[5, 3], |n: &[usize]| -> i32 {
+    let n_array = NArray::<i32>::from_function(2, &[5, 3], |n: &[usize]| -> i32 {
         let r = n.to_vec().iter().fold(1, |acc, &item| acc*item as i32);
         println!("{:?} = {:?}", n, r);
         r
