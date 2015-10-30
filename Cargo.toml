@@ -1,0 +1,4 @@
+[package]
+name = "n_array"
+version = "0.1.0"
+authors = ["Sam Blumire <sdblumire@gmail.com>"]
