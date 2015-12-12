@@ -12,7 +12,6 @@ pub fn index_to_position(dimensions: usize, magnitudes: &Vec<usize>, index: &[us
         }
         target_index += index * magnitudes.iter().take(i).fold(1, |acc, &item| acc*item);
     }
-    println!("TI {}", target_index);
     target_index
 }
 

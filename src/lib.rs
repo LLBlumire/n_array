@@ -13,13 +13,13 @@ use std::iter::IntoIterator;
 use std::ops::{Index, IndexMut};
 use std::vec::IntoIter;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 /// An arbitrary n-dimensional array. Dimensions is the number of dimensions, magnitudes contains
 /// the size of each dimension, and data contains the data for the array.
 pub struct NArray<T> {
-    dimensions: usize,
-    magnitudes: Vec<usize>,
-    data: Vec<T>
+    pub dimensions: usize,
+    pub magnitudes: Vec<usize>,
+    pub data: Vec<T>
 }
 impl<T> NArray<T> {
     /// Returns a new NArray, with each index populated by a function of it's coordinates.)
